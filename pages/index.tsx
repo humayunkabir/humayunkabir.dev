@@ -1,5 +1,25 @@
 import Head from 'next/head';
+import Image, { StaticImageData } from 'next/image';
 import Icon from './components/Icon';
+
+import github from './assets/img/github.png';
+import linkedin from './assets/img/linkedin.png';
+import twitter from './assets/img/twitter.png';
+import facebook from './assets/img/facebook.png';
+import whatsapp from './assets/img/whatsapp.png';
+
+interface SocialIconProps {
+  src: StaticImageData;
+  href: string;
+  name: 'github' | 'linkedin' | 'twitter' | 'facebook' | 'whatsapp';
+}
+
+const SocialIcon = ({ src, href, name }: SocialIconProps) => (
+  <a href={href} target='_blank' rel='noreferrer' className='social-icon'>
+    <Icon name={name} className='w-12 h-12' />
+    {/* <Image src={src} alt={name} height={40} width={40} /> */}
+  </a>
+);
 
 const Home = () => (
   <>
@@ -20,34 +40,31 @@ const Home = () => (
         </p>
 
         <div className='flex justify-center mt-12 space-x-2'>
-          <a
-            href='https://www.facebook.com/humayunkabirdev'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Icon name='facebook' className='w-12 h-12' />
-          </a>
-          <a
-            href='https://www.linkedin.com/in/humayunkabirdev'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Icon name='linkedin' className='w-12 h-12' />
-          </a>
-          <a
-            href='https://twitter.com/humayunkabirdev'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Icon name='twitter' className='w-12 h-12' />
-          </a>
-          <a
+          <SocialIcon
             href='https://github.com/humayunkabir'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <Icon name='github' className='w-12 h-12' />
-          </a>
+            name='github'
+            src={github}
+          />
+          <SocialIcon
+            href='https://www.linkedin.com/in/humayunkabirdev'
+            name='linkedin'
+            src={linkedin}
+          />
+          <SocialIcon
+            href='https://twitter.com/humayunkabirdev'
+            name='twitter'
+            src={twitter}
+          />
+          <SocialIcon
+            href='https://wa.me/+8801709152786'
+            name='whatsapp'
+            src={whatsapp}
+          />
+          <SocialIcon
+            href='https://www.facebook.com/humayunkabirdev'
+            name='facebook'
+            src={facebook}
+          />
         </div>
       </div>
     </main>
