@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# humayunkabir.dev
+
+Personal portfolio and web space for Humayun Kabir.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **UI Library:** [React](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Linter & Formatter:** [Biome](https://biomejs.dev/)
+- **Package Manager:** [pnpm](https://pnpm.io/)
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies using `pnpm`:
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, run the development server:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the project running.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Available Scripts
 
-## Learn More
+- `pnpm dev`: Starts the development server.
+- `pnpm build`: Builds the application for production.
+- `pnpm start`: Starts the production server.
+- `pnpm lint`: Runs Biome for code linting and formatting.
+- `pnpm deploy`: Builds the project and deploys it (configured for GitHub Pages).
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/` - Next.js App Router pages, layouts, and API routes.
+- `src/components/` - Reusable React components.
+- `src/styles/` - Global stylesheets.
+- `src/assets/` - Static assets and media files.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+### GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is configured for easy deployment to GitHub Pages. The `deploy` script handles the build process and pushes the `out` directory to the `gh-pages` branch.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Ensure your Next.js configuration is set up for static exports (e.g., `output: 'export'` in `next.config.ts`).
+2. Run the deployment command:
+   ```bash
+   pnpm deploy
+   ```
+This will automatically build your static site, create the `out` directory, and push it to the `gh-pages` branch. Make sure GitHub Pages is enabled in your repository settings to serve from the `gh-pages` branch.
+
+### Cloudflare Pages
+
+To deploy this static Next.js project on Cloudflare Pages:
+
+1. Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages**.
+2. Click **Create** > **Pages** > **Connect to Git** and select this repository.
+3. Configure the following build settings during setup:
+   - **Framework preset:** Next.js (Static HTML Export)
+   - **Build command:** `pnpm build`
+   - **Build output directory:** `out`
+4. Under **Environment variables (advanced)**, you may want to set `NODE_VERSION` to a version compatible with your setup (e.g., `20` or higher).
+5. Click **Save and Deploy**. 
+
+Cloudflare will now automatically trigger a build and deploy your site on every push to your production branch.
