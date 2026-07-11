@@ -4,6 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
 	reactStrictMode: true,
 	typescript: { ignoreBuildErrors: true },
+	output: "export",
 	assetPrefix: isProd ? "/" : "",
 };
 

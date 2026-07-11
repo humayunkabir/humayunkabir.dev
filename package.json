@@ -9,8 +9,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "biome check .",
-		"export": "next export",
-		"deploy": "next build && next export && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
+		"deploy": "next build && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
 	},
 	"dependencies": {
 		"next": "^16.2.10",
