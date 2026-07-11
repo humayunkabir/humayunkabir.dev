@@ -33,7 +33,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `pnpm build`: Builds the application for production.
 - `pnpm start`: Starts the production server.
 - `pnpm lint`: Runs Biome for code linting and formatting.
-- `pnpm deploy`: Builds the project and deploys it (configured for GitHub Pages).
 
 ## Project Structure
 
@@ -44,28 +43,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployment
 
-### GitHub Pages
-
-The project is configured for easy deployment to GitHub Pages. The `deploy` script handles the build process and pushes the `out` directory to the `gh-pages` branch.
-
-1. Ensure your Next.js configuration is set up for static exports (e.g., `output: 'export'` in `next.config.ts`).
-2. Run the deployment command:
-   ```bash
-   pnpm deploy
-   ```
-This will automatically build your static site, create the `out` directory, and push it to the `gh-pages` branch. Make sure GitHub Pages is enabled in your repository settings to serve from the `gh-pages` branch.
-
 ### Cloudflare Pages
 
-To deploy this static Next.js project on Cloudflare Pages:
+The project is configured to deploy full-stack Next.js features to Cloudflare Pages (via OpenNext).
 
 1. Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages**.
 2. Click **Create** > **Pages** > **Connect to Git** and select this repository.
 3. Configure the following build settings during setup:
-   - **Framework preset:** Next.js (Static HTML Export)
+   - **Framework preset:** Next.js
    - **Build command:** `pnpm build`
-   - **Build output directory:** `out`
-4. Under **Environment variables (advanced)**, you may want to set `NODE_VERSION` to a version compatible with your setup (e.g., `20` or higher).
+4. Under **Environment variables (advanced)**, set `NODE_VERSION` to `22.12.0` (or your compatible local Node version).
 5. Click **Save and Deploy**. 
 
-Cloudflare will now automatically trigger a build and deploy your site on every push to your production branch.
+Cloudflare will now automatically trigger a build and deploy your site using OpenNext on every push to your production branch.
