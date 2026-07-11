@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Fira_Code } from "next/font/google";
+import { Fira_Code, Inter } from "next/font/google";
 import "@/styles/globals.css";
+
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-inter",
+	display: "swap",
+});
 
 const firaCode = Fira_Code({
 	subsets: ["latin"],
@@ -15,8 +21,15 @@ export const metadata: Metadata = {
 		template: "%s | Humayun Kabir",
 	},
 	description:
-		"Humayun Kabir is a design-focused software engineer based in Dhaka, currently working at bKash Limited as Assistant Lead Engineer.",
-	keywords: ["Web Engineer", "Software Engineer", "React", "Next.js", "Dhaka", "bKash"],
+		"Humayun Kabir is a design-focused software engineer based in Dhaka, currently working at bKash Limited as Lead Engineer.",
+	keywords: [
+		"Web Engineer",
+		"Software Engineer",
+		"React",
+		"Next.js",
+		"Dhaka",
+		"bKash",
+	],
 	authors: [{ name: "Humayun Kabir" }],
 	creator: "Humayun Kabir",
 	openGraph: {
@@ -64,8 +77,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={`${firaCode.className} font-mono text-base antialiased scroll-smooth`}>
+		<html lang="en" className="dark">
+			<body
+				className={`${inter.variable} ${firaCode.variable} font-sans bg-zinc-950 text-zinc-300 antialiased scroll-smooth selection:bg-zinc-800 selection:text-zinc-100 min-h-screen flex flex-col`}
+			>
+				<div className="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900/40 via-zinc-950 to-zinc-950" />
 				{children}
 			</body>
 		</html>
